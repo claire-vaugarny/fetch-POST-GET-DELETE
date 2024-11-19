@@ -1,0 +1,52 @@
+        // dans le terminal taper les commandes suivantes pour activer le serveur
+        // npm install -g json-server
+        // json-server --watch test.json
+
+
+!!Remarque!!
+Mon serveur Node.js utilise une structure où chaque élément de votre tableau JSON
+est accessible via un identifiant basé sur un indice (0, 1, etc.).
+Autrement dit si mon fichier test.json() correspond à ça :
+[
+  {
+    "id": "8177",
+    "piece-id": 6,
+    "utilisateur": "gfhgfg",
+    "commentaire": "hgfhj"
+  },
+  {
+    "id": "00d1",
+    "piece-id": 9,
+    "utilisateur": "gfhjhgj",
+    "commentaire": "hfgjghj"
+  }
+]
+Il va créé 2 Endpoints où chaque élément du tableau est considérer comme un élément
+individuel: 
+http://localhost:3000/0
+http://localhost:3000/1
+
+Pour pouvoir retourner l'ensemble du tableau, il faut mettre les éléments dans un
+objet, ici ce sera 'avis'
+{
+  "avis": [
+    {
+      "id": "8177",
+      "piece-id": 6,
+      "utilisateur": "gfhgfg",
+      "commentaire": "hgfhj"
+    },
+    {
+      "id": "00d1",
+      "piece-id": 9,
+      "utilisateur": "gfhjhgj",
+      "commentaire": "hfgjghj"
+    }
+  ]
+}
+Ainsi un seul Endpoints sera créé :
+http://localhost:3000/avis
+
+
+!!Remarque!! automatiquement à chaque nouveau POST un id est créer par le serveur et est ajouté dans le 
+fichier json si il n'est pas préciser dans le script.
